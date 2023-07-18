@@ -8,9 +8,20 @@ public class DepoimentoDTO {
 	private Long id;
 	private String corpoDoDepoimento;
 	private byte[] imagem;
+	private String nomeDeQuemFezODepoimento;
+
+	public DepoimentoDTO() {
+	}
 
 	public DepoimentoDTO(Depoimento depoimento) {
 		BeanUtils.copyProperties(depoimento, this);
+	}
+
+	public DepoimentoDTO(Long id, String corpoDoDepoimento, byte[] imagem, String nomeDeQuemFezODepoimento) {
+		this.id = id;
+		this.corpoDoDepoimento = corpoDoDepoimento;
+		this.imagem = imagem;
+		this.nomeDeQuemFezODepoimento = nomeDeQuemFezODepoimento;
 	}
 
 	public Long getId() {
@@ -37,5 +48,12 @@ public class DepoimentoDTO {
 		this.imagem = imagem;
 	}
 
-	
+	public String getNomeDeQuemFezODepoimento() {
+		return nomeDeQuemFezODepoimento;
+	}
+
+	public void setNomeDeQuemFezODepoimento(String nomeDeQuemFezODepoimento) {
+		this.nomeDeQuemFezODepoimento = nomeDeQuemFezODepoimento;
+	}
+
 }

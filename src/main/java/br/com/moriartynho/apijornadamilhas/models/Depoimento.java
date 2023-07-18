@@ -8,24 +8,27 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Depoimento {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String corpoDoDepoimento;
-	
+
 	@Column(columnDefinition = "LONGBLOB")
 	private byte[] imagem;
 	
+	private String nomeDeQuemFezODepoimento;
+
 	public Depoimento() {
-		
+
 	}
 
-	public Depoimento(Long id, String corpoDoDepoimento, byte[] imagem) {
+	public Depoimento(Long id, String corpoDoDepoimento, byte[] imagem, String nomeDeQuemFezODepoimento) {
 		this.id = id;
 		this.corpoDoDepoimento = corpoDoDepoimento;
 		this.imagem = imagem;
+		this.nomeDeQuemFezODepoimento = nomeDeQuemFezODepoimento;
 	}
 
 	public Long getId() {
@@ -51,7 +54,14 @@ public class Depoimento {
 	public void setImagem(byte[] imagem) {
 		this.imagem = imagem;
 	}
-	
+
+	public String getNomeDeQuemFezODepoimento() {
+		return nomeDeQuemFezODepoimento;
+	}
+
+	public void setNomeDeQuemFezODepoimento(String nomeDeQuemFezODepoimento) {
+		this.nomeDeQuemFezODepoimento = nomeDeQuemFezODepoimento;
+	}
 	
 	
 

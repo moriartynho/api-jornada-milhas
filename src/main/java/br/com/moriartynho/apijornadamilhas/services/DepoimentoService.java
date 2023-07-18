@@ -11,7 +11,7 @@ import br.com.moriartynho.apijornadamilhas.repositories.DepoimentoRepository;
 
 @Service
 public class DepoimentoService {
-	
+
 	@Autowired
 	private DepoimentoRepository depoimentoRepository;
 
@@ -25,6 +25,28 @@ public class DepoimentoService {
 		Depoimento depoimento = depoimentoRepository.getById(id);
 		DepoimentoDTO dto = new DepoimentoDTO(depoimento);
 		return dto;
+	}
+
+	public void inserirDepoimento(Depoimento depoimento) {
+		depoimentoRepository.save(depoimento);
+	}
+
+	public void removerDepoimento(Depoimento depoimento) {
+		depoimentoRepository.delete(depoimento);
+		
+	}
+
+	public List<DepoimentoDTO> depoimentosAleatoriosDaHome() {
+		List<DepoimentoDTO> dto = depoimentoRepository.findAleatorio().stream().map(x -> toDTO(x)).toList();
+		return dto;
+	}
+	
+	public Depoimento fromDTO(DepoimentoDTO dto) {
+		return new Depoimento(dto.getId(), dto.getCorpoDoDepoimento(), dto.getImagem(), dto.getNomeDeQuemFezODepoimento());
+	}
+	
+	public DepoimentoDTO toDTO(Depoimento depoimento) {
+		return new DepoimentoDTO(depoimento.getId(), depoimento.getCorpoDoDepoimento(), depoimento.getImagem(), depoimento.getNomeDeQuemFezODepoimento());
 	}
 
 }

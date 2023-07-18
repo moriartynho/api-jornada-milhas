@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.moriartynho.apijornadamilhas.dto.DepoimentoDTO;
+import br.com.moriartynho.apijornadamilhas.models.Depoimento;
 import br.com.moriartynho.apijornadamilhas.services.DepoimentoService;
 
 @RestController
@@ -26,7 +28,9 @@ public class DepoimentoController {
 	
 	
 	@PostMapping
-	public ResponseEntity<DepoimentoDTO> inserirDepoimento(){
+	public ResponseEntity<DepoimentoDTO> inserirDepoimento(@RequestBody DepoimentoDTO dto){
+		Depoimento depoimento = depoimentoService.fromDTO(dto);
+		depoimentoService.inserirDepoimento(depoimento);
 		return ResponseEntity.ok().build();
 	}
 	
@@ -43,14 +47,17 @@ public class DepoimentoController {
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<DepoimentoDTO> editaUmDepoimento(@PathVariable Long id){
+	public ResponseEntity<DepoimentoDTO> editaUmDepoimento(@PathVariable Long id, @RequestBody DepoimentoDTO dto){
+		Depoimento depoimento = depoimentoService.fromDTO(dto);
+		depoimentoService.inserirDepoimento(depoimento);
 		return ResponseEntity.ok().build();
 	}
 	
 	@DeleteMapping(path ="/{id}")
-	public ResponseEntity<DepoimentoDTO> deletaUmDepoimento(@PathVariable Long id){
-		
-		return ResponseEntity.ok().body(null);
+	public ResponseEntity<DepoimentoDTO> deletaUmDepoimento(@PathVariable Long id, @RequestBody DepoimentoDTO dto){
+		Depoimento depoimento = depoimentoService.fromDTO(dto);
+		depoimentoService.removerDepoimento(depoimento);
+		return ResponseEntity.ok().build();
 	}
 	
 
