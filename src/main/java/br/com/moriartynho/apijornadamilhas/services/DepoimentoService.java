@@ -31,7 +31,8 @@ public class DepoimentoService {
 		depoimentoRepository.save(depoimento);
 	}
 
-	public void removerDepoimento(Depoimento depoimento) {
+	public void removerDepoimento(Long id) {
+		Depoimento depoimento = depoimentoRepository.getById(id);
 		depoimentoRepository.delete(depoimento);
 		
 	}

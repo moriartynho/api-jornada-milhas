@@ -54,9 +54,8 @@ public class DepoimentoController {
 	}
 	
 	@DeleteMapping(path ="/{id}")
-	public ResponseEntity<DepoimentoDTO> deletaUmDepoimento(@PathVariable Long id, @RequestBody DepoimentoDTO dto){
-		Depoimento depoimento = depoimentoService.fromDTO(dto);
-		depoimentoService.removerDepoimento(depoimento);
+	public ResponseEntity<DepoimentoDTO> deletaUmDepoimento(@PathVariable Long id){
+		depoimentoService.removerDepoimento(id);
 		return ResponseEntity.ok().build();
 	}
 	
