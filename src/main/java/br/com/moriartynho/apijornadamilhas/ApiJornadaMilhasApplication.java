@@ -1,5 +1,6 @@
 package br.com.moriartynho.apijornadamilhas;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +9,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.moriartynho.apijornadamilhas.models.Depoimento;
+import br.com.moriartynho.apijornadamilhas.models.Destino;
 import br.com.moriartynho.apijornadamilhas.repositories.DepoimentoRepository;
+import br.com.moriartynho.apijornadamilhas.repositories.DestinoRepository;
 
 @SpringBootApplication
 public class ApiJornadaMilhasApplication implements CommandLineRunner {
 	
 	@Autowired
 	DepoimentoRepository depoimentoRepository;
+	
+	@Autowired
+	DestinoRepository destinoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiJornadaMilhasApplication.class, args);
@@ -35,6 +41,14 @@ public class ApiJornadaMilhasApplication implements CommandLineRunner {
 		
 		depoimentoRepository.saveAll(Arrays.asList(d1, d2, d3, d4, d5, d6));
 		
+		Destino dt1 = new Destino(null, null, "Paris", new BigDecimal("250.00"));
+		Destino dt2 = new Destino(null, null, "Londres", new BigDecimal("250.00"));
+		Destino dt3 = new Destino(null, null, "Dublin", new BigDecimal("250.00"));
+		Destino dt4 = new Destino(null, null, "Tóquio", new BigDecimal("250.00"));
+		Destino dt5 = new Destino(null, null, "Nova Iorque", new BigDecimal("250.00"));
+		Destino dt6 = new Destino(null, null, "Fortaleza", new BigDecimal("250.00"));
+		
+		destinoRepository.saveAll(Arrays.asList(dt1, dt2, dt3, dt4, dt5, dt6));
 	}
 
 }
