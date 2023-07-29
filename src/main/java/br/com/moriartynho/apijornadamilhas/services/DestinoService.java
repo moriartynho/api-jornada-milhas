@@ -36,15 +36,21 @@ public class DestinoService {
 	public void removerDestino(Long id) {
 		Destino destino = destinoRepository.getById(id);
 		destinoRepository.delete(destino);
-		
+
 	}
-	
+
 	public Destino fromDTO(DestinoDTO dto) {
 		return new Destino(dto.getId(), dto.getImagem(), dto.getNome(), dto.getPreco());
 	}
-	
+
 	public DestinoDTO toDTO(Destino destino) {
 		return new DestinoDTO(destino);
+	}
+
+	public List<DestinoDTO> retornaDestinoPorNome(String nome) throws Exception {
+		List<Destino> destinos = destinoRepository.findAllByNome(nome);
+		List<DestinoDTO> dto = destinos.stream().map(x -> new DestinoDTO(x)).toList();
+		return dto;
 	}
 
 }
