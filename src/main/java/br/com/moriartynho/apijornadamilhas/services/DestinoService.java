@@ -40,7 +40,7 @@ public class DestinoService {
 	}
 
 	public Destino fromDTO(DestinoDTO dto) {
-		return new Destino(dto.getId(), dto.getImagem(), dto.getNome(), dto.getPreco());
+		return new Destino(dto.getId(), dto.getFoto1(), dto.getFoto2(), dto.getNome(), dto.getPreco(), dto.getMeta(), dto.getDescricao());
 	}
 
 	public DestinoDTO toDTO(Destino destino) {

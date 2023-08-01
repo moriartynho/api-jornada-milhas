@@ -2,6 +2,8 @@ package br.com.moriartynho.apijornadamilhas.models;
 
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,20 +18,32 @@ public class Destino {
 	private Long id;
 
 	@Column(columnDefinition = "LONGBLOB")
-	private byte[] imagem;
+	private byte[] foto1;
+
+	@Column(columnDefinition = "LONGBLOB")
+	private byte[] foto2;
 
 	private String nome;
 
 	private BigDecimal preco;
 
+	@Length(max = 160)
+	private String meta;
+
+	private String descricao;
+
 	public Destino() {
 	}
 
-	public Destino(Long id, byte[] imagem, String nome, BigDecimal preco) {
+	public Destino(Long id, byte[] foto1, byte[] foto2, String nome, BigDecimal preco, @Length(max = 160) String meta,
+			String descricao) {
 		this.id = id;
-		this.imagem = imagem;
+		this.foto1 = foto1;
+		this.foto2 = foto2;
 		this.nome = nome;
 		this.preco = preco;
+		this.meta = meta;
+		this.descricao = descricao;
 	}
 
 	public Long getId() {
@@ -40,12 +54,20 @@ public class Destino {
 		this.id = id;
 	}
 
-	public byte[] getImagem() {
-		return imagem;
+	public byte[] getFoto1() {
+		return foto1;
 	}
 
-	public void setImagem(byte[] imagem) {
-		this.imagem = imagem;
+	public void setFoto1(byte[] foto1) {
+		this.foto1 = foto1;
+	}
+
+	public byte[] getFoto2() {
+		return foto2;
+	}
+
+	public void setFoto2(byte[] foto2) {
+		this.foto2 = foto2;
 	}
 
 	public String getNome() {
@@ -62,6 +84,22 @@ public class Destino {
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+
+	public String getMeta() {
+		return meta;
+	}
+
+	public void setMeta(String meta) {
+		this.meta = meta;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 }

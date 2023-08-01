@@ -18,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import br.com.moriartynho.apijornadamilhas.models.Depoimento;
 import br.com.moriartynho.apijornadamilhas.models.Destino;
 
 @SpringBootTest
@@ -26,14 +25,11 @@ import br.com.moriartynho.apijornadamilhas.models.Destino;
 @AutoConfigureJsonTesters
 class DestinoControllerTest {
 
-
 	@Autowired
 	private MockMvc mockMvc;
-	
 
 	@Autowired
 	private JacksonTester<Destino> destinoJsonPost;
-
 
 	@Test
 	public void deveRetornarTodosOsDestinos() throws Exception {
@@ -51,35 +47,28 @@ class DestinoControllerTest {
 
 	@Test
 	public void devePostarUmDestino() throws Exception {
-		
-		
-		var response = mockMvc
-				.perform(post("/destinos")
-						.contentType(MediaType.APPLICATION_JSON)
-						.content(destinoJsonPost
-						.write(new Destino(20L, null, "Itapevi", new BigDecimal("250.00")))
-						.getJson()))
+
+		var response = mockMvc.perform(post("/destinos").contentType(MediaType.APPLICATION_JSON).content(destinoJsonPost
+				.write(new Destino(20L, null, null, "Itapevi", new BigDecimal("250.00"), null, null)).getJson()))
 				.andReturn().getResponse();
 
-
 		assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
 
 	}
-	
+
 	@Test
 	public void deveDeletarUmDestino() throws Exception {
-		var response = mockMvc.perform(delete("/destinos/1")
-				.contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
+		var response = mockMvc.perform(delete("/destinos/1").contentType(MediaType.APPLICATION_JSON)).andReturn()
+				.getResponse();
 
 		assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
 	}
-	
+
 	@Test
 	public void deveEditarUmDestino() throws Exception {
-		var response = mockMvc.perform(put("/destinos/1")
-				.contentType(MediaType.APPLICATION_JSON)
+		var response = mockMvc.perform(put("/destinos/1").contentType(MediaType.APPLICATION_JSON)
 				.content(destinoJsonPost
-						.write(new Destino(null, null, "Osasco", new BigDecimal("250.00")))
+						.write(new Destino(null, null, null, "Osasco", new BigDecimal("250.00"), null, null))
 						.getJson()))
 				.andReturn().getResponse();
 

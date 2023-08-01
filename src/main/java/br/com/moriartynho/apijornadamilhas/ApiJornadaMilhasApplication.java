@@ -39,15 +39,15 @@ public class ApiJornadaMilhasApplication implements CommandLineRunner {
 
 		depoimentoRepository.saveAll(Arrays.asList(d1, d2, d3, d4, d5, d6));
 
-		Destino dt1 = new Destino(null, null, "Paris", new BigDecimal("250.00"));
-		Destino dt2 = new Destino(null, null, "Londres", new BigDecimal("250.00"));
-		Destino dt3 = new Destino(null, null, "Dublin", new BigDecimal("250.00"));
-		Destino dt4 = new Destino(null, null, "Tóquio", new BigDecimal("250.00"));
-		Destino dt5 = new Destino(null, null, "Nova Iorque", new BigDecimal("250.00"));
-		Destino dt6 = new Destino(null, null, "Fortaleza", new BigDecimal("250.00"));
-		Destino dt7 = new Destino(null, null, "Paris", new BigDecimal("350.00"));
-		Destino dt8 = new Destino(null, null, "Paris", new BigDecimal("450.00"));
-		Destino dt9 = new Destino(null, null, "Paris", new BigDecimal("1250.00"));
+		Destino dt1 = new Destino(null, null, null, "Paris", new BigDecimal("250.00"), null, null);
+		Destino dt2 = new Destino(null, null, null, "Londres", new BigDecimal("250.00"), null, null);
+		Destino dt3 = new Destino(null, null, null, "Dublin", new BigDecimal("250.00"), null, null);
+		Destino dt4 = new Destino(null, null, null, "Tóquio", new BigDecimal("250.00"), null, null);
+		Destino dt5 = new Destino(null, null, null, "Nova Iorque", new BigDecimal("250.00"), null, null);
+		Destino dt6 = new Destino(null, null, null, "Fortaleza", new BigDecimal("250.00"), null, null);
+		Destino dt7 = new Destino(null, null, null, "Paris", new BigDecimal("350.00"), null, null);
+		Destino dt8 = new Destino(null, null, null, "Paris", new BigDecimal("450.00"), null, null);
+		Destino dt9 = new Destino(null, null, null, "Paris", new BigDecimal("1250.00"), null, null);
 
 		destinoRepository.saveAll(Arrays.asList(dt1, dt2, dt3, dt4, dt5, dt6, dt7, dt8, dt9));
 	}
